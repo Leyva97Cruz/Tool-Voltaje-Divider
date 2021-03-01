@@ -29,7 +29,7 @@ namespace Tool_Voltaje_Divider
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CboSelect = new System.Windows.Forms.ComboBox();
             this.TxtVou = new System.Windows.Forms.TextBox();
             this.TxtR1 = new System.Windows.Forms.TextBox();
             this.TxtVin = new System.Windows.Forms.TextBox();
@@ -37,78 +37,88 @@ namespace Tool_Voltaje_Divider
             this.BtnCalcular = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // CboSelect
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(20)))), ((int)(((byte)(60)))));
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Font = new System.Drawing.Font("JetBrainsMono Nerd Font Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.ForeColor = System.Drawing.Color.White;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.CboSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(20)))), ((int)(((byte)(60)))));
+            this.CboSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CboSelect.Font = new System.Drawing.Font("JetBrainsMono Nerd Font Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CboSelect.ForeColor = System.Drawing.Color.White;
+            this.CboSelect.FormattingEnabled = true;
+            this.CboSelect.Items.AddRange(new object[] {
             "Obtener R1",
             "Obtener R2",
             "Obtener Vou"});
-            this.comboBox1.Location = new System.Drawing.Point(46, 83);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(5);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(202, 28);
-            this.comboBox1.TabIndex = 0;
+            this.CboSelect.Location = new System.Drawing.Point(46, 28);
+            this.CboSelect.Margin = new System.Windows.Forms.Padding(5);
+            this.CboSelect.Name = "CboSelect";
+            this.CboSelect.Size = new System.Drawing.Size(202, 28);
+            this.CboSelect.TabIndex = 0;
+            this.CboSelect.SelectedValueChanged += new System.EventHandler(this.CboSelect_SelectedValueChanged);
             // 
             // TxtVou
             // 
             this.TxtVou.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(20)))), ((int)(((byte)(66)))));
             this.TxtVou.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtVou.ForeColor = System.Drawing.Color.White;
-            this.TxtVou.Location = new System.Drawing.Point(45, 191);
+            this.TxtVou.Location = new System.Drawing.Point(46, 161);
             this.TxtVou.Name = "TxtVou";
             this.TxtVou.Size = new System.Drawing.Size(202, 27);
             this.TxtVou.TabIndex = 1;
             this.TxtVou.Text = "Voltaje de Salida";
+            this.TxtVou.Enter += new System.EventHandler(this.TxtVou_Enter);
+            this.TxtVou.Leave += new System.EventHandler(this.TxtVou_Leave);
             // 
             // TxtR1
             // 
             this.TxtR1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(20)))), ((int)(((byte)(66)))));
             this.TxtR1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtR1.ForeColor = System.Drawing.Color.White;
-            this.TxtR1.Location = new System.Drawing.Point(45, 285);
+            this.TxtR1.Location = new System.Drawing.Point(281, 161);
             this.TxtR1.Name = "TxtR1";
             this.TxtR1.Size = new System.Drawing.Size(202, 27);
             this.TxtR1.TabIndex = 1;
             this.TxtR1.Text = "Resistencia 1";
+            this.TxtR1.Enter += new System.EventHandler(this.TxtR1_Enter);
+            this.TxtR1.Leave += new System.EventHandler(this.TxtR1_Leave);
             // 
             // TxtVin
             // 
             this.TxtVin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(20)))), ((int)(((byte)(66)))));
             this.TxtVin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtVin.ForeColor = System.Drawing.Color.White;
-            this.TxtVin.Location = new System.Drawing.Point(45, 240);
+            this.TxtVin.Location = new System.Drawing.Point(46, 210);
             this.TxtVin.Name = "TxtVin";
             this.TxtVin.Size = new System.Drawing.Size(202, 27);
             this.TxtVin.TabIndex = 1;
             this.TxtVin.Text = "Voltaje de Entrada";
+            this.TxtVin.Enter += new System.EventHandler(this.TxtVin_Enter);
+            this.TxtVin.Leave += new System.EventHandler(this.TxtVin_Leave);
             // 
             // TxtR2
             // 
             this.TxtR2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(20)))), ((int)(((byte)(66)))));
             this.TxtR2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtR2.ForeColor = System.Drawing.Color.White;
-            this.TxtR2.Location = new System.Drawing.Point(45, 337);
+            this.TxtR2.Location = new System.Drawing.Point(281, 210);
             this.TxtR2.Name = "TxtR2";
             this.TxtR2.Size = new System.Drawing.Size(202, 27);
             this.TxtR2.TabIndex = 1;
             this.TxtR2.Text = "Resistencia 2";
+            this.TxtR2.Enter += new System.EventHandler(this.TxtR2_Enter);
+            this.TxtR2.Leave += new System.EventHandler(this.TxtR2_Leave);
             // 
             // BtnCalcular
             // 
             this.BtnCalcular.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.BtnCalcular.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnCalcular.ForeColor = System.Drawing.Color.White;
-            this.BtnCalcular.Location = new System.Drawing.Point(72, 389);
+            this.BtnCalcular.Location = new System.Drawing.Point(58, 294);
             this.BtnCalcular.Name = "BtnCalcular";
             this.BtnCalcular.Size = new System.Drawing.Size(150, 31);
             this.BtnCalcular.TabIndex = 2;
             this.BtnCalcular.Text = "Calcular";
             this.BtnCalcular.UseVisualStyleBackColor = true;
+            this.BtnCalcular.Click += new System.EventHandler(this.BtnCalcular_Click);
             // 
             // Form1
             // 
@@ -121,11 +131,12 @@ namespace Tool_Voltaje_Divider
             this.Controls.Add(this.TxtR2);
             this.Controls.Add(this.TxtR1);
             this.Controls.Add(this.TxtVou);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.CboSelect);
             this.Font = new System.Drawing.Font("JetBrainsMono Nerd Font Mono", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Form1";
             this.Text = "Divisor de Voltaje";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,7 +144,7 @@ namespace Tool_Voltaje_Divider
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CboSelect;
         private System.Windows.Forms.TextBox TxtVou;
         private System.Windows.Forms.TextBox TxtR1;
         private System.Windows.Forms.TextBox TxtVin;
