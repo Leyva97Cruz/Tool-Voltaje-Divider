@@ -12,6 +12,8 @@ namespace Tool_Voltaje_Divider
 {
     public partial class Form1 : Form
     {
+        Divisor DivisorVoltaje = new Divisor();
+
         public Form1()
         {
             InitializeComponent();
