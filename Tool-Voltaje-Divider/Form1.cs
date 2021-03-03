@@ -14,6 +14,7 @@ namespace Tool_Voltaje_Divider
     {
         Divisor DivisorVoltaje = new Divisor();
         ControlObjet Control = new ControlObjet();
+        double DataR1, DataR2, DataVin, DataVou;
 
 
         public Form1()
@@ -30,6 +31,7 @@ namespace Tool_Voltaje_Divider
             }
            
         }
+
         private void TxtVou_Leave(object sender, EventArgs e)
         {
             if (TxtVou.Text == "")
@@ -93,21 +95,45 @@ namespace Tool_Voltaje_Divider
             }
         }
 
+        private void TracVin_Scroll(object sender, EventArgs e)
+        {
+            Control.Simulation(PrbVou, DataVin, DataR1, DataR2);
+        }
+
         private void BtnCalcular_Click(object sender, EventArgs e)
         {
+
             switch (Control.Returndata())
             {
                 case 0:
                     double R1 = DivisorVoltaje.GetR1(TxtVin.Text, TxtVou.Text, TxtR2.Text);
-                    Console.WriteLine("El resultado es :" + R1.ToString("0.##"));
+                    
+                    MessageBox.Show("El resultado es :" + R1.ToString("0.##"));
+
+                    Control.ClearTxt(TxtR1, TxtR2, TxtVou, TxtVin);
                     break;
                 case 1:
                     double R2 = DivisorVoltaje.GetR2(TxtVin.Text, TxtVou.Text, TxtR1.Text);
-                    Console.WriteLine("El resultado es :" + R2.ToString("0.##"));
+                    
+                    MessageBox.Show("El Resultado es :" + R2.ToString("0.##"));
+
+                    Control.ClearTxt(TxtR1, TxtR2, TxtVou, TxtVin);
                     break;
                 case 2:
                     double Vou = DivisorVoltaje.GetVout(TxtVin.Text, TxtR1.Text, TxtR2.Text);
-                    Console.WriteLine("El resultado es :" + Vou.ToString("0.##"));
+                    
+                    MessageBox.Show("El resultado es :" + Vou.ToString("0.##"));
+
+                    Control.ClearTxt(TxtR1, TxtR2, TxtVou, TxtVin);
+                    break;
+                case 3:
+                    DataR1 = Convert.ToDouble(TxtR1.Text);
+                    DataR2 = Convert.ToDouble(TxtR2.Text);
+                    DataVin = Convert.ToDouble(TxtVin.Text);
+                    TracVin.Maximum = Convert.ToInt32(DataVin);
+                    TracVin.Value = Convert.ToInt32(DataVin);
+                    PrbVou.Maximum = Convert.ToInt32(DataVou);
+                    Control.Simulation(PrbVou, DataVin, DataR1, DataR2);
                     break;
                 default:
                     break;
@@ -128,6 +154,8 @@ namespace Tool_Voltaje_Divider
         private void CboSelect_SelectedValueChanged(object sender, EventArgs e)
         {
             Control.GetIndexCbo(CboSelect.SelectedIndex, TxtR1, TxtR2, TxtVou, TxtVin);
+            TracVin.Value = 30;
+            PrbVou.Value = 10;
 
         }
     }
